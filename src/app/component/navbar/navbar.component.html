@@ -43,6 +43,7 @@
                 </span>
             </a>
         </div>
+
     </nav>
 
     <div *ngIf="isMenuOpen" class="navbar-menu relative z-50 lg:hidden">
@@ -55,17 +56,21 @@
                 </a>
             </div>
             <ul>
-                <li class="mb-1"><a (click)="handleLinkClick('/')"
-                        class="text-lg block p-4 text-sm font-bold text-primary hover:text-blue-600 rounded cursor-pointer">Home</a>
+                <li class="mb-1"><a routerLink="" class="text-lg block p-4 text-sm font-bold text-primary hover:text-blue-600 rounded
+                        cursor-pointer">Home</a>
                 </li>
-                <li class="mb-1"><a (click)="handleLinkClick('/aboutus')"
+                <li class="mb-1"><a routerLink="aboutus"
                         class="text-lg block p-4 text-sm font-bold text-primary hover:text-blue-600 rounded cursor-pointer">About</a>
                 </li>
-                <li class="mb-1"><a (click)="handleLinkClick('/products')"
-                        class="text-lg block p-4 text-sm font-bold text-primary hover:text-blue-600 rounded cursor-pointer">Products</a>
+                <li class="mb-1">
+                    <a routerLink="products"
+                        class="text-lg block p-4 text-sm font-bold text-primary hover:text-blue-600 rounded cursor-pointer">
+                        Products</a>
                 </li>
-                <li class="mb-1"><a (click)="handleLinkClick('/contactus')"
-                        class="text-lg block p-4 text-sm font-bold text-primary hover:text-blue-600 rounded cursor-pointer">Contact</a>
+                <li class="mb-1">
+                    <a routerLink="contactus"
+                        class="text-lg block p-4 text-sm font-bold text-primary hover:text-blue-600 rounded cursor-pointer">
+                        Contact</a>
                 </li>
             </ul>
             <div class="mt-auto">

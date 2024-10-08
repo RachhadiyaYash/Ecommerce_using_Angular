@@ -1,7 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { CartService } from '../../services/cart/cart-service.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -11,20 +11,24 @@ import { Subscription } from 'rxjs';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
 })
-export class NavbarComponent {
-  totalItems: number = 0;
+export class NavbarComponent implements OnInit {
+  totalItems: any;
   isMenuOpen: boolean = false;
-  private cartSubscription!: Subscription;
-  router: any;
+  private subscription: Subscription = new Subscription();
 
-  ngOnInit(): void {}
+  constructor(private cartService: CartService) {}
+
+  ngOnInit(): void {
+    this.subscription = this.cartService.totalItems$.subscribe((totalItems) => {
+      this.totalItems = totalItems;
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
-  }
-
-  handleLinkClick(href: string) {
-    this.isMenuOpen = false;
-    this.router.navigate([href]);
   }
 }
