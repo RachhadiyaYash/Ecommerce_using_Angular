@@ -31,7 +31,7 @@ export class ProductComponent implements OnInit {
 
   addToCart(product: any) {
     this.cartService.addToCart(product);
-    alert(`${product.title} added to cart!`);
+
     const existingCart = JSON.parse(localStorage.getItem('cartItems') || '[]');
     const existingItem = existingCart.find(
       (item: any) => item.title === product.title
